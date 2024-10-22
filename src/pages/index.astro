@@ -1,12 +1,22 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/sections/Hero.astro';
+import Slider from '@/sections/Slider.astro';
+import OurMission from '@/sections/OurMission.astro';
+import Footer from '@/components/Footer.astro';
+import CardsInfo from '@/sections/CardsInfo.astro';
+import AboutUs from '@/sections/AboutUs.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="flex flex-col">
+<Layout title="FullRenew">
+	<main class="flex flex-col gap-16">
 		<Header></Header>
 		<Hero></Hero>
+		<Slider></Slider>
+		<OurMission></OurMission>
+		<CardsInfo></CardsInfo>
+		<AboutUs></AboutUs>
+		<Footer></Footer>
 	</main>
 </Layout>

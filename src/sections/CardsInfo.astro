@@ -1,0 +1,28 @@
+---
+import Card from "@/components/Card.astro";
+
+const info = [
+    {
+        title: "Cambio de bateria",
+        image: "./OurMission.webp",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor elit, ultrices in purus quis, dignissim facilisis nunc. Maecenas vitae turpis magna. Nullam euismod est nisl. Vestibulum quis ipsum vel mauris placerat lobortis."
+    },{
+        title: "Reacondicionamiento",
+        image: "./OurMission.webp",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor elit, ultrices in purus quis, dignissim facilisis nunc. Maecenas vitae turpis magna. Nullam euismod est nisl."
+    },{
+        title: "Limpieza a fondo",
+        image: "./OurMission.webp",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor elit, ultrices in purus quis, dignissim facilisis nunc. Maecenas vitae turpis magna. Nullam euismod est nisl. Vestibulum quis ipsum vel mauris placerat lobortis."
+    }
+]
+---
+<section class="flex flex-row w-full justify-center">
+    <div class="grid grid-cols-3 w-3/4 gap-12">
+        {
+            info.map((item) => {
+                return <Card title={item.title} image={item.image} description={item.description}></Card>
+            })
+        }
+    </div>
+</section>
