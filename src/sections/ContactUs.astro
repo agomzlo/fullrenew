@@ -2,24 +2,25 @@
 import Email from "@/icons/Email.astro";
 import Phone from "@/icons/Phone.astro";
 import Position from "@/icons/Position.astro";
-
-
 ---
-<section id="contactUs" class="flex flex-row w-full justify-center">
-    <span class="grid grid-cols-3 w-3/4 gap-12">
-        <article class="flex flex-col justify-center items-center gap-4">
+<section id="contactUs" class="flex flex-row w-full justify-center py-12">
+    <span class="grid grid-cols-3 w-5/6 gap-12">
+        <article class="flex flex-col items-center gap-4">
             <Phone class="w-10 h-10 text-white"></Phone>
             <h3 class="text-white text-xl font-bold">LLAMANOS</h3>
-            <a class="text-neutral-300" href="tel:+34604846040">Teléfono de ventas</a>
-            <a class="text-neutral-300" href="tel:+34624310814">Teléfono de oficina</a>
+            <a class="text-neutral-300 font-semibold" href="tel:+34604846040">Teléfono de ventas</a>
+            <a class="text-neutral-300 font-semibold" href="tel:+34624310814">Teléfono de oficina</a>
         </article>
-        <article class="flex flex-col justify-center items-center gap-4">
+        <article class="flex flex-col items-center gap-4">
             <Email class="w-10 h-10 text-white"></Email>
             <h3 class="text-white text-xl font-bold">ESCRIBENOS</h3>
+            <a class="text-neutral-300 font-semibold" href="mailto:ventas@fullrenew.es" >ventas@fullrenew.es</a>
         </article>
-        <article class="flex flex-col justify-center items-center gap-4">
+        <article class="flex flex-col items-center gap-4">
             <Position class="w-10 h-10 text-white"></Position>
             <h3 class="text-white text-xl font-bold">VISITANOS</h3>
+            <a class="text-neutral-300 font-semibold" href="https://maps.app.goo.gl/yoLYvDcmMcHGHw6k6" target="_blank">FullRenew SL, Calle Cristo 4</a>
+            <p class="text-neutral-300">Vélez-Málaga, 29700, España</p>
         </article>
     </span>
 </section>
