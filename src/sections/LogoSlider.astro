@@ -1,0 +1,72 @@
+---
+type Logo = {
+  src: string;
+  alt: string;
+};
+
+const logos: Logo[] = [
+  { src: "./favicon.svg", alt: "Logo 1" },
+  { src: "./favicon.svg", alt: "Logo 2" },
+  { src: "./favicon.svg", alt: "Logo 3" },
+  { src: "./favicon.svg", alt: "Logo 4" },
+];
+---
+
+<div class="relative overflow-hidden w-full max-w-screen-lg h-24">
+  <div id="slider" class="flex gap-8 absolute w-max">
+    {logos.map((logo) => (
+      <img
+        src={logo.src}
+        alt={logo.alt}
+        class="logo h-24 w-auto"
+      />
+    ))}
+  </div>
+</div>
+
+<script>
+  const logos = document.querySelectorAll('.logo') as NodeListOf<HTMLImageElement>;
+
+  // Duración de la animación (30 segundos)
+  const duration = 5 * 1000; // 30 segundos en milisegundos
+
+  // Posiciones de reinicio: de -20 a 120vw
+  const startX = 120;
+  const endX = -20;
+
+  const updatePositions = (startTime: number, startPositions: number[]) => {
+    const currentTime = performance.now();
+    const elapsed = currentTime - startTime;
+
+    logos.forEach((logo, index) => {
+      // Calcular el porcentaje completado de la animación
+      const percentage = (elapsed % duration) / duration;
+
+      // Calcular la nueva posición X en función del tiempo y la posición inicial
+      let newX = startPositions[index] - percentage * (startX - endX);
+
+      // Si el logo ha alcanzado la posición endX, reiniciar a startX
+      if (newX <= endX) {
+        newX = startX;
+      }
+
+      logo.style.transform = `translateX(${newX}vw)`;
+    });
+
+    requestAnimationFrame(() => updatePositions(startTime, startPositions));
+  };
+
+  // Función para iniciar la animación
+  const startAnimation = () => {
+    // Obtener la posición inicial de cada logo en el DOM
+    const startPositions = Array.from(logos).map((_, index) => {
+      return startX + index * 20; // Desplazamos cada logo un poco hacia la derecha
+    });
+
+    const startTime = performance.now();
+    updatePositions(startTime, startPositions);
+  };
+
+  // Iniciar la animación cuando el contenido esté listo
+  startAnimation();
+</script>

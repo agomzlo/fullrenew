@@ -1,6 +1,20 @@
 ---
+import Whatsapp from "@/icons/Whatsapp.astro";
+
+const whatsappMessage = {
+    url: 'https://wa.me/',
+    phone: '604846040',
+    text: 'Hola, quiero saber más sobre sus servicios'
+}
+
+const whatsappHref = `${whatsappMessage.url}${whatsappMessage.phone}?text=${whatsappMessage.text}`
 
 ---
-<section>
-    <h2 class="text-white text-3xl font-bold">Cambio de Baterias</h2>
+<section class="relative flex flex-col gap-6 py-12">
+    <h2 class="text-white text-3xl font-bold">¿Necesitas un Cambio de Bateria?</h2>
+    <p class="text-neutral-300">Cambiamos tu bateria sin mensaje</p>
+    <a href={whatsappHref} target="_blank" class="flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full w-fit hover:scale-105 hover:bg-white transition-all">
+        <Whatsapp></Whatsapp>
+        <p class="text-sm font-bold">Contactanos</p>
+    </a>
 </section>

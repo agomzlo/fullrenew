@@ -1,8 +1,8 @@
 ---
 
 ---
-<section id="aboutUs" class="grid grid-cols-2 items-center justify-items-center gap-4 py-12">
-    <span class="flex flex-col gap-6">
+<section id="aboutUs" class="grid grid-cols-2 justify-items-center gap-4 py-12 relative min-h-min overflow-visible">
+    <span class="flex flex-col gap-6 sticky top-10 overflow-hidden h-fit">
         <h2 class="text-white text-3xl font-bold">Sobre Nosotros</h2>
         <div class="flex flex-col gap-4 text-neutral-300">
             <p>
@@ -15,6 +15,23 @@
                 Nuestra presencia se extiende por toda Europa, donde trabajamos estrechamente con clientes, proporcionándoles soluciones tecnológicas accesibles y de alta calidad. Además, reinvertimos constantemente en investigación y desarrollo (I+D) para mejorar nuestros productos y procesos, asegurando que nuestros clientes reciban siempre lo mejor en tecnología reacondicionada.
             </p>
         </div>
+        <div>
+            <span class=" border-neutral-700 flex flex-row justify-between py-4 px-2">
+                <h2 class="text-neutral-300">Año Fundación</h2>
+                <p class="text-white">2020</p>
+            </span>
+            <span class="border-y border-neutral-700 flex flex-row justify-between py-4 px-2">
+                <h2 class="text-neutral-300">Empleados</h2>
+                <p class="text-white">7</p>
+            </span>
+            <span class="border-neutral-700 flex flex-row justify-between py-4 px-2">
+                <h2 class="text-neutral-300">Dispositivos Vendidos</h2>
+                <p class="text-white">+33000</p>
+            </span>
+        </div>
     </span>
-    <img class="h-full w-auto aspect-video" src="./OurMission.webp" alt="">
+    <span class="flex flex-col gap-6 relative">
+        <img class="h-auto w-full aspect-video rounded-lg" src="./OurMission.webp" alt="">
+        <img class="h-auto w-full aspect-video rounded-lg" src="./OurMission.webp" alt="">
+    </span>
 </section>

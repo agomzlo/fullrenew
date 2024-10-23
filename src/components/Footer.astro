@@ -1,20 +1,31 @@
 ---
 import Email from "@/icons/Email.astro";
+import Instagram from "@/icons/Instagram.astro";
+import TikTok from "@/icons/TikTok.astro";
+import YouTube from "@/icons/YouTube.astro";
 
 
 ---
-<footer class="mt-12 flex flex-col items-center justify-center gap-6">
-    <h4 class="text-white font-semibold font-xl">SUSCRIBETE A NUESTRA NEWSLETTER</h4>
-    <p class="text-neutral-300 w-1/2 text-center">Suscríbete a nuestro boletín para recibir noticias, actualizaciones gratuitas de contenido interesante y nuevos productos lanzados</p>
-    <form action="">
-        <span class="flex flex-row justify-center items-center">
-            <div class="relative w-full">
-                <Email class="absolute inset-[13px] w-5 h-5 text-neutral-300 -z-10"></Email>
-                <input class="block p-3 pl-10 w-full text-sm text-white bg-transparent rounded-l-lg outline-none border border-gray-300" placeholder="Introduce aqui tu email" type="email" id="email">
-            </div>
-            <div>
-                <button type="submit" class="py-3 px-5 w-full text-sm font-medium text-center bg-neutral-300 text-neutral-900 rounded-r-lg border cursor-pointer bg-primary-700 border-primary-600 hover:bg-white transition-all">Subscribir</button>
-            </div>
+<footer class="mt-12 flex flex-col items-center justify-center gap-12">
+    <div class="flex flex-col items-center justify-center gap-6 w-full">
+        <h4 class="text-white font-semibold font-xl">SUSCRIBETE A NUESTRA NEWSLETTER</h4>
+        <p class="text-neutral-300 w-full text-center">Suscríbete a nuestro boletín para recibir noticias, actualizaciones gratuitas de contenido interesante y nuevos productos lanzados</p>
+        <form action="">
+            <span class="flex flex-row justify-center items-center">
+                <div class="relative w-full">
+                    <Email class="absolute inset-[13px] w-5 h-5 text-neutral-300 -z-10"></Email>
+                    <input class="block p-3 pl-10 w-full text-sm text-white bg-transparent rounded-l-lg outline-none border-t border-l border-b border-gray-300" placeholder="Introduce aqui tu email" type="email" id="email">
+                </div>
+                <button type="submit" class="h-[46px] w-36 text-sm font-bold text-center bg-neutral-300 text-neutral-900 rounded-r-lg border cursor-pointer border-gray-300 hover:bg-white hover:text-base transition-all">Subscribir</button>
+            </span>
+        </form>
+    </div>
+    <div class="flex flex-col items-center justify-center gap-6 w-full">
+        <h2 class="text-white text-2xl font-bold">Siguenos en nuestras redes sociales</h2>
+        <span class="flex flex-row justify-center w-full gap-8">
+            <YouTube class="text-neutral-300 size-8 cursor-pointer hover:scale-105 hover:text-white"></YouTube>
+            <Instagram class="text-neutral-300 size-8 cursor-pointer hover:scale-105 hover:text-white"></Instagram>
+            <TikTok class="text-neutral-300 size-8 cursor-pointer hover:scale-105 hover:text-white"></TikTok>
         </span>
-    </form>
+    </div>
 </footer>
