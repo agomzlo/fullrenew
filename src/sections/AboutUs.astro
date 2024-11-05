@@ -1,10 +1,10 @@
 ---
 
 ---
-<section id="aboutUs" class="grid grid-cols-2 justify-items-center gap-4 py-12 relative min-h-min overflow-visible">
-    <span class="flex flex-col gap-6 sticky top-10 overflow-hidden h-fit">
-        <h2 class="text-white text-3xl font-bold">Sobre Nosotros</h2>
-        <div class="flex flex-col gap-4 text-neutral-300">
+<section id="aboutUs" class="grid md:grid-cols-2 justify-items-center gap-2 md:gap-4 py-6 md:py-12 relative min-h-min overflow-visible">
+    <span class="flex flex-col gap-3 md:gap-6 md:sticky top-10 overflow-hidden h-fit">
+        <h2 class="text-white text-xl md:text-3xl font-bold">Sobre Nosotros</h2>
+        <div class="flex flex-col gap-4 text-neutral-300 text-sm md:text-base">
             <p>
                 Fundamos Fullrenew a finales de 2019, tras nuestra experiencia en una empresa de telefonía especializada en reacondicionamiento. Comenzamos con la venta al consumidor final (B2C) a través de plataformas ecommerce, y con el tiempo, hemos evolucionado para enfocarnos en el mercado mayorista (B2B) en toda Europa, distribuyendo iPhones reacondicionados a empresas y tiendas.
             </p>
@@ -30,7 +30,10 @@
             </span>
         </div>
     </span>
-    <span class="flex flex-col gap-6 relative">
+    <span class="flex flex-row md:flex-col gap-6 relative overflow-x-scroll pb-4
+    [&::-webkit-scrollbar-track]:bg-background [&::-webkit-scrollbar-thumb]:bg-secondary
+    [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar]:h-2">
+        <img class="h-auto w-full aspect-video rounded-lg" src="./OurMission.webp" alt="">
         <img class="h-auto w-full aspect-video rounded-lg" src="./OurMission.webp" alt="">
         <img class="h-auto w-full aspect-video rounded-lg" src="./OurMission.webp" alt="">
     </span>
