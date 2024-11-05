@@ -10,11 +10,31 @@ const whatsappMessage = {
 const whatsappHref = `${whatsappMessage.url}${whatsappMessage.phone}?text=${whatsappMessage.text}`
 
 ---
-<section class="relative flex flex-col gap-3 md:gap-6 py-6 md:py-12">
+<!-- <section class="relative flex flex-col gap-3 md:gap-6 py-6 md:py-12">
     <h2 class="text-white text-xl md:text-3xl font-bold">¿Necesitas un Cambio de Bateria?</h2>
-    <p class="text-neutral-300 text-sm md:text-base">Cambiamos tu bateria sin mensaje</p>
-    <a href={whatsappHref} target="_blank" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full w-fit hover:scale-105 hover:bg-whatsapp transition-all">
-        <Whatsapp class="group-hover/whatsapp:text-primary"></Whatsapp>
-        <p class="group-hover/whatsapp:text-primary text-sm font-bold">Contactanos</p>
-    </a>
+    <div class="grid grid-cols-3 grid-rows-2 items-center justify-items-center">
+        <span class="flex flex-col col-span-2 gap-4">
+            <p class="text-neutral-300 text-sm md:text-base">Somos especialistas en cambios de batería para dispositivos iPhone, restaurando la autonomía y rendimiento que necesitas sin complicaciones. Utilizamos baterías de alta calidad y técnicas especializadas, tales como microsoldaduras de punto por láser para asegurar una conexión perfecta y de máxima durabilidad. Nuestras técnicas permiten reparar y reemplazar baterías con precisión, sin causar la aparición de mensajes de "pieza desconocida" en el sistema de tu iPhone.</p>
+            <p class="text-neutral-300 text-sm md:text-base">Nuestro equipo de técnicos expertos garantiza un reemplazo seguro, rápido y profesional, para que puedas disfrutar de tu iPhone con el mejor rendimiento, como si fuera nuevo.</p>
+        </span>
+        <video class="h-80 w-auto aspect-square row-span-2" src="./microsoldadura.mp4" autoplay muted loop></video>
+        <a href={whatsappHref} target="_blank" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-whatsapp transition-all">
+            <Whatsapp class="group-hover/whatsapp:text-primary"></Whatsapp>
+            <p class="group-hover/whatsapp:text-primary text-sm font-bold">Contactanos</p>
+        </a>
+    </div>
+</section> -->
+<section class="grid lg:grid-cols-3 py-6 md:py-12 gap-3 justify-items-center">
+    <span class="col-span-2 flex flex-col gap-3 md:gap-6 md:sticky top-10">
+        <h2 class="text-white text-xl md:text-3xl font-bold">¿Necesitas un Cambio de Batería?</h2>
+        <div class="flex flex-col col-span-2 gap-3">
+            <p class="text-neutral-300 text-sm md:text-base">Somos especialistas en cambios de batería para dispositivos iPhone, restaurando la autonomía y rendimiento que necesitas sin complicaciones. Utilizamos baterías de alta calidad y técnicas especializadas, tales como microsoldaduras de punto por láser para asegurar una conexión perfecta y de máxima durabilidad. Nuestras técnicas permiten reparar y reemplazar baterías con precisión, sin causar la aparición de mensajes de "pieza desconocida" en el sistema de tu iPhone.</p>
+            <p class="text-neutral-300 text-sm md:text-base">Nuestro equipo de técnicos expertos garantiza un reemplazo seguro, rápido y profesional, para que puedas disfrutar de tu iPhone con el mejor rendimiento, como si fuera nuevo.</p>
+        </div>
+        <a href={whatsappHref} target="_blank" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-whatsapp transition-all">
+            <Whatsapp class="group-hover/whatsapp:text-primary"></Whatsapp>
+            <p class="group-hover/whatsapp:text-primary text-sm font-bold">Contactanos</p>
+        </a>
+    </span>
+    <video class="hidden lg:block h-auto w-2/3 row-span-2 rounded-md" src="./microsoldadura.mp4" autoplay muted loop></video>
 </section>

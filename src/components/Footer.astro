@@ -3,11 +3,12 @@ import Email from "@/icons/Email.astro";
 import Instagram from "@/icons/Instagram.astro";
 import TikTok from "@/icons/TikTok.astro";
 import YouTube from "@/icons/YouTube.astro";
+import Whatsapp from "@/icons/Whatsapp.astro";
 
-
+const whatsappHref = "https://whatsapp.com/channel/0029VaDSD2mDp2QBrLhglU2x"
 ---
 <footer class="mt-6 md:mt-12 flex flex-col items-center justify-center gap-6 md:gap-12">
-    <div class="flex flex-col items-center justify-center gap-3 md:gap-6 w-full">
+    <!-- <div class="flex flex-col items-center justify-center gap-3 md:gap-6 w-full">
         <h4 class="text-white font-semibold text-base md:text-xl">SUSCRIBETE A NUESTRA NEWSLETTER</h4>
         <p class="text-neutral-300 w-full text-center">Suscríbete a nuestro boletín para recibir noticias, actualizaciones gratuitas de contenido interesante y nuevos productos lanzados</p>
         <form action="">
@@ -19,13 +20,27 @@ import YouTube from "@/icons/YouTube.astro";
                 <button type="submit" class="h-[46px] w-36 text-sm font-bold text-center bg-neutral-300 text-neutral-900 rounded-r-lg border cursor-pointer border-gray-300 hover:bg-white hover:text-base transition-all">Subscribir</button>
             </span>
         </form>
+    </div> -->
+    <div class="flex flex-col items-center justify-center gap-3 md:gap-6 w-full">
+        <h4 class="text-white font-semibold text-base md:text-xl">UNETE A NUESTRO CANAL DE WHATSAPP</h4>
+        <p class="text-neutral-300 w-full md:w-1/2 text-center">Unete ya a nuestro canal de Whatsapp para recibir noticias, actualizaciones gratuitas de contenido interesante y nuevos productos lanzados</p>
+        <a href={whatsappHref} target="_blank" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full w-fit hover:scale-105 hover:bg-whatsapp transition-all">
+            <Whatsapp class="group-hover/whatsapp:text-primary"></Whatsapp>
+            <p class="group-hover/whatsapp:text-primary text-sm font-bold">Unete Ya</p>
+        </a>
     </div>
     <div class="flex flex-col items-center justify-center gap-3 md:gap-6 w-full">
-        <h2 class="text-white text-lg md:text-2xl font-bold">Siguenos en nuestras redes sociales</h2>
+        <h4 class="text-white font-semibold text-base md:text-xl">SIGUENOS EN NUESTRAS REDES SOCIALES</h4>
         <span class="flex flex-row justify-center w-full gap-8">
-            <YouTube class="text-neutral-300 size-8 cursor-pointer hover:scale-105 hover:text-white"></YouTube>
-            <Instagram class="text-neutral-300 size-8 cursor-pointer hover:scale-105 hover:text-white"></Instagram>
-            <TikTok class="text-neutral-300 size-8 cursor-pointer hover:scale-105 hover:text-white"></TikTok>
+            <a href="https://www.youtube.com/@fullRenew" target="_blank" rel="noreferrer">
+                <YouTube class="text-neutral-300 size-8 hover:scale-105 hover:text-white"></YouTube>
+            </a>
+            <a href="https://www.instagram.com/fullrenew" target="_blank" rel="noreferrer">
+                <Instagram class="text-neutral-300 size-8 hover:scale-105 hover:text-white"></Instagram>
+            </a>
+            <a href="https://www.tiktok.com/@fullrenew" target="_blank" rel="noreferrer">
+                <TikTok class="text-neutral-300 size-8 hover:scale-105 hover:text-white"></TikTok>
+            </a>
         </span>
     </div>
 </footer>
