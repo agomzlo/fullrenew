@@ -8,7 +8,6 @@ const whatsappMessage = {
 }
 
 const whatsappHref = `${whatsappMessage.url}${whatsappMessage.phone}?text=${whatsappMessage.text}`
-
 ---
 <!-- <section class="relative flex flex-col gap-3 md:gap-6 py-6 md:py-12">
     <h2 class="text-white text-xl md:text-3xl font-bold">¿Necesitas un Cambio de Bateria?</h2>
@@ -26,12 +25,12 @@ const whatsappHref = `${whatsappMessage.url}${whatsappMessage.phone}?text=${what
 </section> -->
 <section class="grid lg:grid-cols-3 py-6 md:py-12 gap-3 justify-items-center">
     <span class="col-span-2 flex flex-col gap-3 md:gap-6 md:sticky top-10">
-        <h2 class="text-white text-xl md:text-3xl font-bold">¿Necesitas un Cambio de Batería?</h2>
+        <h2 class="text-white text-xl md:text-3xl font-bold">Compra stock con 100% de bateria</h2>
         <div class="flex flex-col col-span-2 gap-3">
-            <p class="text-neutral-300 text-sm md:text-base">Somos especialistas en cambios de batería para dispositivos iPhone, restaurando la autonomía y rendimiento que necesitas sin complicaciones. Utilizamos baterías de alta calidad y técnicas especializadas, tales como microsoldaduras de punto por láser para asegurar una conexión perfecta y de máxima durabilidad. Nuestras técnicas permiten reparar y reemplazar baterías con precisión, sin causar la aparición de mensajes de "pieza desconocida" en el sistema de tu iPhone.</p>
-            <p class="text-neutral-300 text-sm md:text-base">Nuestro equipo de técnicos expertos garantiza un reemplazo seguro, rápido y profesional, para que puedas disfrutar de tu iPhone con el mejor rendimiento, como si fuera nuevo.</p>
+            <p class="text-neutral-300 text-sm md:text-base">Ofrecemos baterías con una salud renovada al 100%, listas para rendir al máximo. Utilizamos celdas de alta calidad, tecnología de soldadura láser y realizamos rigurosos tests de rendimiento para garantizar una durabilidad excepcional. Con nuestra amplia experiencia técnica, proporcionamos baterías que cumplen con los estándares más exigentes. Además, contamos con precios competitivos especialmente diseñados para empresas, asegurando una excelente relación calidad-precio.</p>
+            <p class="text-neutral-300 text-sm md:text-base">Potencia tus dispositivos con la confianza de una batería que ofrece rendimiento y fiabilidad desde el primer momento, a un costo optimizado para tu negocio.</p>
         </div>
-        <a href={whatsappHref} target="_blank" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-whatsapp transition-all">
+        <a href={whatsappHref} target="_blank" rel="noreferrer" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-whatsapp transition-all">
             <Whatsapp class="group-hover/whatsapp:text-primary"></Whatsapp>
             <p class="group-hover/whatsapp:text-primary text-sm font-bold">Contactanos</p>
         </a>

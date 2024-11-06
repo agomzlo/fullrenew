@@ -1,14 +1,25 @@
 ---
+import Whatsapp from "@/icons/Whatsapp.astro";
 
+const whatsappMessage = {
+    url: 'https://wa.me/',
+    phone: '604846040',
+    text: 'Hola, quiero saber más sobre sus servicios'
+}
+
+const whatsappHref = `${whatsappMessage.url}${whatsappMessage.phone}?text=${whatsappMessage.text}`
 ---
 <section class="flex flex-col gap-6 md:gap-12">
     <h1 class="text-2xl md:text-6xl font-medium text-white leading-snug">
-        Impulsa tu negocio con iPhones reacondicionados de calidad: stock amplio, entregas rápidas y garantía confiable.
+        Impulsa tu negocio con iPhones reacondicionados usados de calidad: stock amplio, entregas rápidas y garantía confiable.
     </h1>
     <p class="text-neutral-300 md:text-xl md:w-1/2">
         Descubre la mejor selección de iPhones reacondicionados en España. Conoce nuestro stock, precios y garantías.
     </p>
     <span class="w-full flex flex-row justify-end md:justify-start">
-        <a href="/about" class="bg-white text-neutral-900 font-bold py-4 px-6 rounded-full flex flex-row w-fit hover:scale-105 transition-all">Saber más</a>
+        <a href={whatsappHref} target="_blank" rel="noreferrer" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-whatsapp transition-all">
+            <Whatsapp class="group-hover/whatsapp:text-primary"></Whatsapp>
+            <p class="group-hover/whatsapp:text-primary text-sm font-bold">Saber más</p>
+        </a>
     </span>
 </section>
