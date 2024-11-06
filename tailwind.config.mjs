@@ -16,7 +16,7 @@ export default {
 			},
 			keyframes: {
 				logo_slide: {
-					'to': { transform: 'translateX(-314px)' }
+					'to': { transform: 'translateX(-384px)' }
 				},
 				images_slide: {
 					'0%': { transform: 'translateY(0)' },
