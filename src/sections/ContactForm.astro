@@ -1,7 +1,5 @@
 ---
 import Send from "@/icons/Send.astro";
-
-
 ---
 <section class="flex flex-col gap-3 md:gap-6 py-6 md:py-12">
     <div class="grid md:grid-cols-2 gap-8">
@@ -15,17 +13,17 @@ import Send from "@/icons/Send.astro";
             </div>
         </span>
         <span class="grid place-items-center text-white text-3xl font-bold">
-            <form action="" class="flex flex-col items-start justify-around w-full h-full gap-4">
+            <form id="contactForm" class="flex flex-col items-start justify-around w-full h-full gap-4">
                 <span class="flex flex-row gap-4 justify-between w-full">
-                    <input type="text" placeholder="Nombre*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
-                    <input type="text" placeholder="Teléfono" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                    <input id="name" type="text" placeholder="Nombre*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                    <input id="phone" type="text" placeholder="Teléfono" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
                 </span>
-                <input type="text" placeholder="Email*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                <input id="email" type="text" placeholder="Email*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
                 <span class="flex flex-row gap-4 justify-between w-full">
-                    <input type="text" placeholder="Empresa" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
-                    <input type="text" placeholder="Asunto" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                    <input id="companyName" type="text" placeholder="Empresa*" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                    <input id="subject" type="text" placeholder="Asunto" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
                 </span>
-                <textarea name="message" id="message" cols="5" placeholder="Mensaje*" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent resize-none w-full h-40"></textarea>
+                <textarea id="message" cols="5" placeholder="Mensaje*" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent resize-none w-full h-40"></textarea>
                 <span class="w-full flex flex-row justify-end">
                     <button class="flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-primary transition-all">
                         <p class="text-sm font-bold">Enviar</p>
@@ -36,3 +34,50 @@ import Send from "@/icons/Send.astro";
         </span>
     </div>
 </section>
+
+<script>
+    import emailjs from "@emailjs/browser";
+    import { toast } from 'wc-toast'
+
+    const contactForm = document.getElementById("contactForm") as HTMLFormElement;
+    const name = document.getElementById("name") as HTMLInputElement;
+    const phone = document.getElementById("phone") as HTMLInputElement;
+    const email = document.getElementById("email") as HTMLInputElement;
+    const companyName = document.getElementById("companyName") as HTMLInputElement;
+    const subject = document.getElementById("subject") as HTMLInputElement;
+    const message = document.getElementById("message") as HTMLTextAreaElement;
+
+    contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (!name.value || !companyName.value || !email.value || !message.value ) {
+            toast.error("Porfavor rellena los campos obligatorios", {duration: 2500});
+            return;
+        }
+
+        if (!phone.value) phone.value = "No definido";
+        if (!subject.value) subject.value = "No definido";
+
+        const serviceID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+        const templateID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+        const userID = import.meta.env.PUBLIC_EMAILJS_USER_ID;
+
+        const templateParams = {
+            name: name.value,
+            company_name: companyName.value,
+            phone: phone.value,
+            email: email.value,
+            subject: subject.value,
+            message: message.value
+        }
+
+        emailjs.send(serviceID, templateID, templateParams, userID).then(
+            function (response) {
+                toast.success("Mensaje enviado correctamente", {duration: 2500});
+            },
+            function (err) {
+                toast.error("Error al enviar el mensaje", {duration: 2500});
+            },
+        );
+    })
+</script>
