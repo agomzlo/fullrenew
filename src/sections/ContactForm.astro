@@ -76,7 +76,6 @@ import Send from "@/icons/Send.astro";
                 toast.success("Mensaje enviado correctamente", {duration: 2500});
             },
             function (err) {
-                console.log(err)
                 toast.error("Error al enviar el mensaje", {duration: 2500});
             },
         );
