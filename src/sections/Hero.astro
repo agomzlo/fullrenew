@@ -1,5 +1,5 @@
 ---
-import Whatsapp from "@/icons/Whatsapp.astro";
+import WhatsAppButton from "@/components/WhatsAppButton.astro";
 
 const whatsappMessage = {
     url: 'https://wa.me/',
@@ -17,9 +17,8 @@ const whatsappHref = `${whatsappMessage.url}${whatsappMessage.phone}?text=${what
         Descubre la mejor selección de iPhones reacondicionados en España. Conoce nuestro stock, precios y garantías.
     </p>
     <span class="w-full flex flex-row justify-end md:justify-start">
-        <a href={whatsappHref} target="_blank" rel="noreferrer" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-whatsapp transition-all">
-            <Whatsapp class="group-hover/whatsapp:text-primary"></Whatsapp>
-            <p class="group-hover/whatsapp:text-primary text-sm font-bold">Saber más</p>
-        </a>
+        <WhatsAppButton whatsappHref={whatsappHref}>
+            Saber Mas
+        </WhatsAppButton>
     </span>
 </section>

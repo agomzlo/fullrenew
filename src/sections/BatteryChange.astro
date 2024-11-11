@@ -1,5 +1,5 @@
 ---
-import Whatsapp from "@/icons/Whatsapp.astro";
+import WhatsAppButton from "@/components/WhatsAppButton.astro";
 
 const whatsappMessage = {
     url: 'https://wa.me/',
@@ -16,10 +16,9 @@ const whatsappHref = `${whatsappMessage.url}${whatsappMessage.phone}?text=${what
             <p class="text-neutral-300 text-sm md:text-base">Ofrecemos baterías con una salud renovada al 100%, listas para rendir al máximo. Utilizamos celdas de alta calidad, tecnología de soldadura láser y realizamos rigurosos tests de rendimiento para garantizar una durabilidad excepcional. Con nuestra amplia experiencia técnica, proporcionamos baterías que cumplen con los estándares más exigentes. Además, contamos con precios competitivos especialmente diseñados para empresas, asegurando una excelente relación calidad-precio.</p>
             <p class="text-neutral-300 text-sm md:text-base">Potencia tus dispositivos con la confianza de una batería que ofrece rendimiento y fiabilidad desde el primer momento, a un costo optimizado para tu negocio.</p>
         </div>
-        <a href={whatsappHref} target="_blank" rel="noreferrer" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-whatsapp transition-all">
-            <Whatsapp class="group-hover/whatsapp:text-primary"></Whatsapp>
-            <p class="group-hover/whatsapp:text-primary text-sm font-bold">Contactanos</p>
-        </a>
+        <WhatsAppButton whatsappHref={whatsappHref}>
+            Contactanos
+        </WhatsAppButton>
     </span>
     <video class="h-auto w-2/3 col-span-2 md:row-span-2 md:col-span-1 rounded-md min-w-56 max-w-80" src="./microsoldadura.mp4" autoplay muted loop></video>
 </section>

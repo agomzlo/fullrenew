@@ -1,9 +1,8 @@
 ---
-import Email from "@/icons/Email.astro";
 import Instagram from "@/icons/Instagram.astro";
 import TikTok from "@/icons/TikTok.astro";
 import YouTube from "@/icons/YouTube.astro";
-import Whatsapp from "@/icons/Whatsapp.astro";
+import WhatsAppButton from "@/components/WhatsAppButton.astro";
 
 const whatsappHref = "https://whatsapp.com/channel/0029VaDSD2mDp2QBrLhglU2x"
 ---
@@ -24,10 +23,9 @@ const whatsappHref = "https://whatsapp.com/channel/0029VaDSD2mDp2QBrLhglU2x"
     <div class="flex flex-col items-center justify-center gap-3 md:gap-6 w-full">
         <h4 class="text-white font-semibold text-base md:text-xl">UNETE A NUESTRO CANAL DE WHATSAPP</h4>
         <p class="text-neutral-300 w-full md:w-1/2 text-center">Unete ya a nuestro canal de Whatsapp para recibir noticias, actualizaciones gratuitas de contenido interesante y nuevos productos lanzados</p>
-        <a href={whatsappHref} target="_blank" class="group/whatsapp flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full w-fit hover:scale-105 hover:bg-whatsapp transition-all">
-            <Whatsapp class="group-hover/whatsapp:text-primary"></Whatsapp>
-            <p class="group-hover/whatsapp:text-primary text-sm font-bold">Unete Ya</p>
-        </a>
+        <WhatsAppButton whatsappHref={whatsappHref}>
+            Unete Ya
+        </WhatsAppButton>
     </div>
     <div class="flex flex-col items-center justify-center gap-3 md:gap-6 w-full">
         <h4 class="text-white font-semibold text-base md:text-xl">SIGUENOS EN NUESTRAS REDES SOCIALES</h4>

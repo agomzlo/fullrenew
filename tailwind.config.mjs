@@ -7,7 +7,9 @@ export default {
 				'background': '#171717',
 				'primary': '#FFFFFF',
 				'secondary': '#d4d4d4',
-				'whatsapp': '#25D366'
+				'whatsapp': '#25D366',
+				'whatsapp_hover': '#128C7E',
+				'whatsapp_text_hover': '#DCF8C6'
 			},
 			animation: {
 				'logo_slide': 'logo_slide 5s linear infinite',
