@@ -27,15 +27,15 @@ const whatsappHref = `${whatsappMessage.url}${whatsappMessage.phone}?text=${what
             <span class="w-full flex justify-start">
                 <img src="./fullrenew-logo.webp" alt="" class="w-40 h-auto">
             </span>
-            <span class="size-full flex flex-col justify-center items-start gap-16 text-secondary text-2xl font-bold hover:*:text-primary hover:*:scale-105 *:transition-all">
+            <nav class="size-full flex flex-col justify-center items-start gap-16 text-secondary text-2xl font-bold hover:*:text-primary hover:*:scale-105 *:transition-all">
                 <!-- TODO: Disable autofocus on mobile menu -->
-                <a id="menuHome" href="/">Inicio</a>
-                <a id="menuAbout" href="#aboutUs">Sobre Nosotros</a>
-                <a id="menuContact" href="#contactUs">Contactanos</a>
+                <a id="menuHome" class="outline-none" href="/">Inicio</a>
+                <a id="menuAbout" class="outline-none" href="#aboutUs">Sobre Nosotros</a>
+                <a id="menuContact" class="outline-none" href="#contactUs">Contactanos</a>
                 <form method="dialog" class="size-fit">
                     <button><Close class="w-8 h-auto aspect-square cursor-pointer"></Close></button>
                 </form>
-            </span>
+            </nav>
             <span class="w-full flex flex-row justify-end items-center p-4">
                 <WhatsAppButton whatsappHref={whatsappHref}>
                     Saber Mas
