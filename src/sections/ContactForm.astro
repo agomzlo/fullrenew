@@ -1,5 +1,7 @@
 ---
 import Send from "@/icons/Send.astro";
+
+import { europePhoneProfixes } from "@/lib/phonePrefix";
 ---
 <section class="flex flex-col gap-3 md:gap-6">
     <div class="grid md:grid-cols-2 gap-8">
@@ -16,7 +18,16 @@ import Send from "@/icons/Send.astro";
             <form id="contactForm" class="flex flex-col items-start justify-around w-full h-full gap-4">
                 <span class="flex flex-row gap-4 justify-between w-full">
                     <input id="name" type="text" placeholder="Nombre*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
-                    <input id="phone" type="text" placeholder="Teléfono" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                    <span class="flex flex-row w-fit">
+                        <select id="phonePrefix" class="text-sm p-1 outline-none border-y border-l border-neutral-300 rounded-l-lg bg-transparent">
+                            {
+                                Object.values(europePhoneProfixes).map((value: string) => {
+                                    return <option class="bg-background" value={value}>{value}</option>
+                                })
+                            }
+                        </select>
+                        <input id="phone" type="number" placeholder="Teléfono" class="text-sm p-2 outline-none border border-neutral-300 rounded-r-lg bg-transparent w-fit">
+                    </span>
                 </span>
                 <input id="email" type="text" placeholder="Email*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
                 <span class="flex flex-row gap-4 justify-between w-full">
@@ -35,12 +46,27 @@ import Send from "@/icons/Send.astro";
     </div>
 </section>
 
+<style>
+    /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
+
 <script>
     import emailjs from "@emailjs/browser";
     import { toast } from 'wc-toast'
 
     const contactForm = document.getElementById("contactForm") as HTMLFormElement;
     const name = document.getElementById("name") as HTMLInputElement;
+    const phonePrefix = document.getElementById("phonePrefix") as HTMLSelectElement;
     const phone = document.getElementById("phone") as HTMLInputElement;
     const email = document.getElementById("email") as HTMLInputElement;
     const companyName = document.getElementById("companyName") as HTMLInputElement;
@@ -55,24 +81,41 @@ import Send from "@/icons/Send.astro";
             return;
         }
 
-        if (!phone.value) phone.value = "No definido";
-        if (!subject.value) subject.value = "No definido";
+        if (!name.value.match(/^[a-zA-Z\D]{3,}$/)){
+            toast.error("El nombre no es válido", {duration: 2500});
+            return;
+        }
 
-        const serviceID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
-        const templateID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
-        const userID = import.meta.env.PUBLIC_EMAILJS_USER_ID;
+        if (!companyName.value.match(/^[a-zA-Z]{3,}$/)){
+            toast.error("El nombre de la empresa no es válido", {duration: 2500});
+            return;
+        }
+
+        if (!phone.value) phone.value = "No definido";
+
+        if (!email.value.match(/^[a-zA-Z0-9._%+'-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)){
+            toast.error("El email no es válido", {duration: 2500});
+            return;
+        }
+
+        if (!subject.value) subject.value = "No definido";
 
         const templateParams = {
             name: name.value,
             company_name: companyName.value,
-            phone: phone.value,
+            phone: phonePrefix.value + phone.value,
             email: email.value,
             subject: subject.value,
             message: message.value
         }
-
+    
+        const serviceID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+        const templateID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+        const userID = import.meta.env.PUBLIC_EMAILJS_USER_ID;
+        
         emailjs.send(serviceID, templateID, templateParams, userID).then(
             function (response) {
+                contactForm.reset();
                 toast.success("Mensaje enviado correctamente", {duration: 2500});
             },
             function (err) {
