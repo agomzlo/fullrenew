@@ -93,6 +93,11 @@ input[type=number] {
 
         if (!phone.value) phone.value = "No definido";
 
+        if (!phone.value.match(/^[0-9]{7,13}$/)){
+            toast.error("El teléfono no es válido", {duration: 2500});
+            return;
+        }
+
         if (!email.value.match(/^[a-zA-Z0-9._%+'-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)){
             toast.error("El email no es válido", {duration: 2500});
             return;
