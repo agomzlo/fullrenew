@@ -17,24 +17,27 @@ import { europePhoneProfixes } from "@/lib/phonePrefix";
         <span class="grid place-items-center text-white text-3xl font-bold">
             <form id="contactForm" class="flex flex-col items-start justify-around w-full h-full gap-4">
                 <span class="flex flex-row gap-4 justify-between w-full">
-                    <input id="name" type="text" placeholder="Nombre*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                    <input name="name" type="text" placeholder="Nombre*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
                     <span class="flex flex-row w-fit">
-                        <select id="phonePrefix" class="text-sm p-1 outline-none border-y border-l border-neutral-300 rounded-l-lg bg-transparent">
+                        <select name="phonePrefix" class="text-sm p-1 outline-none border-y border-l border-neutral-300 rounded-l-lg bg-transparent">
                             {
                                 Object.values(europePhoneProfixes).map((value: string) => {
                                     return <option class="bg-background" value={value}>{value}</option>
                                 })
                             }
                         </select>
-                        <input id="phone" type="number" placeholder="Teléfono" class="text-sm p-2 outline-none border border-neutral-300 rounded-r-lg bg-transparent w-fit">
+                        <input name="phone" type="number" placeholder="Teléfono" class="text-sm p-2 outline-none border border-neutral-300 rounded-r-lg bg-transparent w-fit">
                     </span>
                 </span>
-                <input id="email" type="text" placeholder="Email*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                <input name="email" type="text" placeholder="Email*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
                 <span class="flex flex-row gap-4 justify-between w-full">
-                    <input id="companyName" type="text" placeholder="Empresa*" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
-                    <input id="subject" type="text" placeholder="Asunto" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                    <input name="company_name" type="text" placeholder="Empresa*" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
+                    <input name="subject" type="text" placeholder="Asunto" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
                 </span>
-                <textarea id="message" cols="5" placeholder="Mensaje*" class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent resize-none w-full h-40"></textarea>
+                <textarea name="message" cols="5" placeholder="Mensaje*" 
+                    class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent resize-none w-full h-40
+                        [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-secondary
+                        [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar]:w-1.5"></textarea>
                 <span class="w-full flex flex-row justify-end">
                     <button class="flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-primary transition-all">
                         <p class="text-sm font-bold">Enviar</p>
@@ -61,71 +64,60 @@ input[type=number] {
 </style>
 
 <script>
-    import emailjs from "@emailjs/browser";
-    import { toast } from 'wc-toast'
+    import { toast } from "wc-toast";
 
     const contactForm = document.getElementById("contactForm") as HTMLFormElement;
-    const name = document.getElementById("name") as HTMLInputElement;
-    const phonePrefix = document.getElementById("phonePrefix") as HTMLSelectElement;
-    const phone = document.getElementById("phone") as HTMLInputElement;
-    const email = document.getElementById("email") as HTMLInputElement;
-    const companyName = document.getElementById("companyName") as HTMLInputElement;
-    const subject = document.getElementById("subject") as HTMLInputElement;
-    const message = document.getElementById("message") as HTMLTextAreaElement;
-
-    contactForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        if (!name.value || !companyName.value || !email.value || !message.value ) {
-            toast.error("Porfavor rellena los campos obligatorios", {duration: 2500});
-            return;
-        }
-
-        if (!name.value.match(/^[a-zA-Z\D]{3,}$/)){
-            toast.error("El nombre no es válido", {duration: 2500});
-            return;
-        }
-
-        if (!companyName.value.match(/^[a-zA-Z]{3,}$/)){
-            toast.error("El nombre de la empresa no es válido", {duration: 2500});
-            return;
-        }
-
-        if (!phone.value) phone.value = "No definido";
-
-        if (!phone.value.match(/^[0-9]{7,13}$/)){
-            toast.error("El teléfono no es válido", {duration: 2500});
-            return;
-        }
-
-        if (!email.value.match(/^[a-zA-Z0-9._%+'-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)){
-            toast.error("El email no es válido", {duration: 2500});
-            return;
-        }
-
-        if (!subject.value) subject.value = "No definido";
-
-        const templateParams = {
-            name: name.value,
-            company_name: companyName.value,
-            phone: phonePrefix.value + phone.value,
-            email: email.value,
-            subject: subject.value,
-            message: message.value
-        }
     
-        const serviceID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
-        const templateID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
-        const userID = import.meta.env.PUBLIC_EMAILJS_USER_ID;
-        
-        emailjs.send(serviceID, templateID, templateParams, userID).then(
-            function (response) {
-                contactForm.reset();
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const form = event.target as HTMLFormElement;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        try{
+            if (!data.name || !data.company_name || !data.email || !data.message ) {
+                throw new Error('Rellena los campos obligatorios');
+            }
+
+            if (!data.name.toString().match(/^[a-zA-Z\D]{3,}$/)){
+                throw new Error('Nombre no valido');
+            }
+
+            if (!data.company_name.toString().match(/^[a-zA-Z]{3,}$/)){
+                throw new Error('Nombre de empresa no valido');
+            }
+
+            if (!data.phone){
+                data.phonePrefix = "";
+                data.phone = "No definido";
+            }
+
+            if (!data.phone.toString().match(/^[0-9]{7,13}$|^No definido$/)){
+                throw new Error('Teléfono no valido');
+            }
+            
+            if (!data.email.toString().match(/^[a-zA-Z0-9._%+'-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)){
+                throw new Error('Email no valido');
+            }
+            
+            if (!data.subject) data.subject = "No definido";
+
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok){
                 toast.success("Mensaje enviado correctamente", {duration: 2500});
-            },
-            function (err) {
-                toast.error("Error al enviar el mensaje", {duration: 2500});
-            },
-        );
-    })
+                form.reset()
+            }
+        } catch (error) {
+            if (error) toast.error(error.toString(), {duration: 2500});
+        }
+
+    });
 </script>
