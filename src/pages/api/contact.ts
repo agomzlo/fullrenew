@@ -17,11 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
             }),
         });
 
-        console.log(recaptchaResponse);
-
         const recaptchaResult = await recaptchaResponse.json();
-
-        console.log(recaptchaResult);
 
         // Verificar el resultado de reCAPTCHA
         if (!recaptchaResult.success) {
