@@ -27,5 +27,9 @@ export default {
 			}
 		},
 	},
+	safelist: [
+		"placeholder-red-300",
+		"border border-red-400",
+	],
 	plugins: [],
 }

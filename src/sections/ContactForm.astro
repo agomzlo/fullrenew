@@ -19,7 +19,7 @@ import { europePhoneProfixes } from "@/lib/phonePrefix";
                 <span class="flex flex-row gap-4 justify-between w-full">
                     <input name="name" type="text" placeholder="Nombre*" class="w-full text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent">
                     <span class="flex flex-row w-fit">
-                        <select name="phonePrefix" class="text-sm p-1 outline-none border-y border-l border-neutral-300 rounded-l-lg bg-transparent">
+                        <select name="phone_prefix" class="text-sm p-1 outline-none border-y border-l border-neutral-300 rounded-l-lg bg-transparent">
                             {
                                 Object.values(europePhoneProfixes).map((value: string) => {
                                     return <option class="bg-background" value={value}>{value}</option>
@@ -38,8 +38,9 @@ import { europePhoneProfixes } from "@/lib/phonePrefix";
                     class="text-sm p-2 outline-none border border-neutral-300 rounded-lg bg-transparent resize-none w-full h-40
                         [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-secondary
                         [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar]:w-1.5"></textarea>
-                <span class="w-full flex flex-row justify-end">
-                    <button class="flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-6 rounded-full size-fit hover:scale-105 hover:bg-primary transition-all">
+                <span class="w-full flex flex-row justify-between items-center">
+                    <div class="g-recaptcha" data-sitekey="6LeaZ34qAAAAAOhIeH7MITJapG5BjCJ2lok4hWvB" data-action="LOGIN"></div>
+                    <button class="flex flex-row items-center gap-2 bg-neutral-300 text-neutral-900 py-4 px-8 rounded-full size-fit hover:scale-105 hover:bg-primary transition-all">
                         <p class="text-sm font-bold">Enviar</p>
                         <Send></Send>
                     </button>
@@ -77,6 +78,10 @@ input[type=number] {
 
         try{
             if (!data.name || !data.company_name || !data.email || !data.message ) {
+                // document.getElementsByName("name")[0].classList.add("placeholder-red-300 border border-red-400");
+                // document.getElementsByName("company_name")[0].classList.add("placeholder-red-300 border border-red-400");
+                // document.getElementsByName("email")[0].classList.add("placeholder-red-300 border border-red-400");
+                // document.getElementsByName("message")[0].classList.add("placeholder-red-300 border border-red-400");
                 throw new Error('Rellena los campos obligatorios');
             }
 
@@ -89,7 +94,7 @@ input[type=number] {
             }
 
             if (!data.phone){
-                data.phonePrefix = "";
+                data.phone_prefix = "";
                 data.phone = "No definido";
             }
 
@@ -102,6 +107,10 @@ input[type=number] {
             }
             
             if (!data.subject) data.subject = "No definido";
+
+            if (!data['g-recaptcha-response']){
+                throw new Error('reCAPTCHA no verificado');
+            }
 
             const response = await fetch('/api/contact', {
                 method: 'POST',
