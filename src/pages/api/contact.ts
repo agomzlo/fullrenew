@@ -28,7 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
 
         await resend.emails.send({
             from: 'fullRenew <onboarding@resend.dev>',
-            to: 'agomzlo11@gmail.com',
+            to: import.meta.env.PRIVATE_RESEND_EMAIL_TO,
             subject: 'Una nueva empresa se quiere poner en contacto con nosotros',
             html: `<p><strong>Nombre:</strong> ${name}</p>
                   <p><strong>Teléfono:</strong> ${phone_prefix} ${phone}</p>
