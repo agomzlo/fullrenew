@@ -4,6 +4,12 @@ type LogoData = {
   alt: string;
 };
 
+interface Props {
+	lazyLoading: boolean;
+}
+
+const { lazyLoading } = Astro.props;
+
 const logos: LogoData[] = [
   { src: "/fullrenew-logo.webp", alt: "Logo fullRenew" },
   { src: "/nsysgroup-logo.webp", alt: "Logo NSYSGroup" },
@@ -23,8 +29,8 @@ const logos: LogoData[] = [
     before:right-0 before:bg-gradient-to-r before:from-transparent before:to-neutral-900">
     <span class="absolute w-auto top-0 left-0 flex flex-row justify-center items-end gap-8">
         {
-            logos.map((logo, index) => (
-                <img src={logo.src} alt={logo.alt} class="animate-logo_slide w-40 h-auto" />
+            logos.map((logo) => (
+              lazyLoading ? <img src={logo.src} alt={logo.alt} loading="lazy" class="animate-logo_slide w-40 h-auto" /> : <img src={logo.src} alt={logo.alt} class="animate-logo_slide w-40 h-auto" />
             ))
         }
     </span>
