@@ -1,66 +1,55 @@
 ---
+import Mobile from "@/icons/Mobile.astro";
 import Star from "@/icons/Star.astro";
 
 ---
-<section class="w-full flex flex-col md:flex-row justify-around gap-4">
-    <div class="group/degree-a relative flex flex-col items-center gap-4">
+<section class="w-full flex flex-col md:flex-row justify-around gap-8 md:gap-0">
+    <div class="group/degree-a flex flex-col items-center gap-4">
         <h2 class="text-primary font-bold text-2xl group-hover/degree-a:[text-shadow:_1px_1px_5px_#d4d4d4]">Grado A</h2>
+        <span class="w-full flex flex-row justify-center gap-4">
+            <Star class="text-whatsapp size-6 group-hover/degree-a:fill-whatsapp group-hover/degree-a:scale-125 transition-all"></Star>
+            <Star class="text-whatsapp size-6 group-hover/degree-a:fill-whatsapp group-hover/degree-a:scale-125 delay-[100ms] transition-all"></Star>
+            <Star class="text-whatsapp size-6 group-hover/degree-a:fill-whatsapp group-hover/degree-a:scale-125 delay-[200ms] transition-all"></Star>
+            <Star class="text-whatsapp size-6 group-hover/degree-a:fill-whatsapp group-hover/degree-a:scale-125 delay-[300ms] transition-all"></Star>
+            <Star class="text-whatsapp size-6 group-hover/degree-a:fill-whatsapp group-hover/degree-a:scale-125 delay-[400ms] transition-all"></Star>
+        </span>
         <span class="text-secondary flex flex-col gap-1 group-hover/degree-a:text-primary transition-all">
             <div class="flex flex-row justify-center gap-1">
-                <p class="font-bold">Aspecto:</p>
-                Casi sin marcas de uso
-            </div>
-            <div class="flex flex-row justify-center gap-1">
-                <p class="font-bold">Condicion Técnica:</p>
-                Todas las piezas son revisadas
+                <!-- <p class="font-bold">Aspecto:</p> -->
+                Como nuevo
             </div>
         </span>
-        <img class="group-hover/degree-a:scale-105 transition-all" src="./mobileDegree.webp" alt="">
-        <span class="absolute w-full bottom-0 flex flex-row justify-center gap-4">
-            <Star class="text-yellow-300 size-16 group-hover/degree-a:fill-yellow-300 group-hover/degree-a:scale-125 transition-all"></Star>
-            <Star class="text-yellow-300 size-16 group-hover/degree-a:fill-yellow-300 group-hover/degree-a:scale-125 delay-[100ms] transition-all"></Star>
-            <Star class="text-yellow-300 size-16 group-hover/degree-a:fill-yellow-300 group-hover/degree-a:scale-125 delay-[200ms] transition-all"></Star>
-            <Star class="text-yellow-300 size-16 group-hover/degree-a:fill-yellow-300 group-hover/degree-a:scale-125 delay-[300ms] transition-all"></Star>
-            <Star class="text-yellow-300 size-16 group-hover/degree-a:fill-yellow-300 group-hover/degree-a:scale-125 delay-[400ms] transition-all"></Star>
-        </span>
+        <img class="w-2/3 group-hover/degree-a:scale-105 transition-all" loading="lazy" src="./mobileDegree.webp" alt="">
     </div>
     <div class="group/degree-b relative flex flex-col items-center gap-4">
         <h2 class="text-primary font-bold text-2xl group-hover/degree-b:[text-shadow:_1px_1px_5px_#d4d4d4]">Grado B</h2>
+        <span class="w-full flex flex-row justify-center gap-4">
+            <Star class="text-whatsapp size-6 group-hover/degree-b:fill-whatsapp group-hover/degree-b:scale-125 transition-all"></Star>
+            <Star class="text-whatsapp size-6 group-hover/degree-b:fill-whatsapp group-hover/degree-b:scale-125 delay-[100ms] transition-all"></Star>
+            <Star class="text-whatsapp size-6 group-hover/degree-b:fill-whatsapp group-hover/degree-b:scale-125 delay-[200ms] transition-all"></Star>
+            <Star class="text-whatsapp size-6 group-hover/degree-b:fill-whatsapp group-hover/degree-b:scale-125 delay-[300ms] transition-all"></Star>
+        </span>
         <span class="text-secondary flex flex-col gap-1 group-hover/degree-b:text-primary transition-all">
             <div class="flex flex-row justify-center gap-1">
-                <p class="font-bold">Aspecto:</p>
+                <!-- <p class="font-bold">Aspecto:</p> -->
                 Con marcas leves de uso
             </div>
-            <div class="flex flex-row justify-center gap-1">
-                <p class="font-bold">Condicion Técnica:</p>
-                Todas las piezas son revisadas
-            </div>
         </span>
-        <img class="group-hover/degree-b:scale-105 transition-all" src="./mobileDegree.webp" alt="">
-        <span class="absolute w-full bottom-0 flex flex-row justify-center gap-4">
-            <Star class="text-yellow-300 size-16 group-hover/degree-b:fill-yellow-300 group-hover/degree-b:scale-125 transition-all"></Star>
-            <Star class="text-yellow-300 size-16 group-hover/degree-b:fill-yellow-300 group-hover/degree-b:scale-125 delay-[100ms] transition-all"></Star>
-            <Star class="text-yellow-300 size-16 group-hover/degree-b:fill-yellow-300 group-hover/degree-b:scale-125 delay-[200ms] transition-all"></Star>
-            <Star class="text-yellow-300 size-16 group-hover/degree-b:fill-yellow-300 group-hover/degree-b:scale-125 delay-[300ms] transition-all"></Star>
-        </span>
+        <img class="w-1/2 group-hover/degree-b:scale-105 transition-all" loading="lazy" src="./mobileDegree.webp" alt="">
     </div>
-    <div class="group/degree-c relative flex flex-col items-center gap-4">
+    <div class="group/degree-c flex flex-col items-center gap-4">
         <h2 class="text-primary font-bold text-2xl group-hover/degree-c:[text-shadow:_1px_1px_5px_#d4d4d4]">Grado C</h2>
+        <span class="w-full flex flex-row justify-center gap-4">
+            <Star class="text-whatsapp size-6 group-hover/degree-c:fill-whatsapp group-hover/degree-c:scale-125 transition-all"></Star>
+            <Star class="text-whatsapp size-6 group-hover/degree-c:fill-whatsapp group-hover/degree-c:scale-125 delay-[100ms] transition-all"></Star>
+            <Star class="text-whatsapp size-6 group-hover/degree-c:fill-whatsapp group-hover/degree-c:scale-125 delay-[200ms] transition-all"></Star>
+        </span>
         <span class="text-secondary flex flex-col gap-1 group-hover/degree-c:text-primary transition-all">
             <div class="flex flex-row justify-center gap-1">
-                <p class="font-bold">Aspecto:</p>
-                Con marcas de uso notables
-            </div>
-            <div class="flex flex-row justify-center gap-1">
-                <p class="font-bold">Condicion Técnica:</p>
-                Todas las piezas son revisadas
+                <!-- <p class="font-bold">Aspecto:</p> -->
+                Con marcas notables
             </div>
         </span>
-        <img class="group-hover/degree-c:scale-105 transition-all" src="./mobileDegree.webp" alt="">
-        <span class="absolute w-full bottom-0 flex flex-row justify-center gap-4">
-            <Star class="text-yellow-300 size-16 group-hover/degree-c:fill-yellow-300 group-hover/degree-c:scale-125 transition-all"></Star>
-            <Star class="text-yellow-300 size-16 group-hover/degree-c:fill-yellow-300 group-hover/degree-c:scale-125 delay-[100ms] transition-all"></Star>
-            <Star class="text-yellow-300 size-16 group-hover/degree-c:fill-yellow-300 group-hover/degree-c:scale-125 delay-[200ms] transition-all"></Star>
-        </span>
+        <img class="w-1/2 group-hover/degree-c:scale-105 transition-all" loading="lazy" src="./mobileDegree.webp" alt="">
     </div>
 </section>
